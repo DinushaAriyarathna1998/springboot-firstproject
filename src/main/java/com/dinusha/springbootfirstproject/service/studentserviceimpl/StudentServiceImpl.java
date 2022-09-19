@@ -38,19 +38,10 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student updateStudent(Student student, int id) {
-
-        // we need to check whether employee with given id is exist in DB or not
-        Student existingStudent = studentRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Employee", "Id", id));
-
-        existingStudent.setName( student.getName());
-        existingStudent.setAge( student.getAge());
-        existingStudent.setGender(student.getGender());
-        // save existing employee to DB
-        studentRepository.save(existingStudent);
-        return existingStudent;
+    public Student updateStudent(Student student) {
+            return studentRepository.save(student);
     }
+
 
     @Override
     public void deleteStudent(int id) {
